@@ -1,9 +1,17 @@
+/*
+ * Author: Prariyavit Tachakitmatetumrong
+ * Student ID: 6510450593
+ */
+
 import java.util.ArrayList;
 
 public class Board {
     private final ArrayList<Square> squares;
     public static final int BOARD_SIZE = 40;
 
+    /*
+     * initialize all squares index, name and price
+     */
     public Board() {
         squares = new ArrayList<>();
 
@@ -52,15 +60,26 @@ public class Board {
         squares.add(new Square(39, "Boardwalk", 400));
     }
 
+    /*
+     * @param start: old square
+     * @param move: dice roll result to move
+     * @return new square after moved
+     */
     public Square getSquare(Square start, int move) {
         int i = (start.getLocation() + move) % Board.BOARD_SIZE;
         return squares.get(i);
     }
 
+    /*
+     * @return all squares
+     */
     public ArrayList<Square> getAllSquares() {
         return this.squares;
     }
 
+    /*
+     * @return start square
+     */
     public Square getStartSquare() {
         return squares.get(0);
     }

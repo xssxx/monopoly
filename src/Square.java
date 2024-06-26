@@ -1,3 +1,8 @@
+/*
+ * Author: Prariyavit Tachakitmatetumrong
+ * Student ID: 6510450593
+ */
+
 public class Square {
     private final String name;
     private final int location;
@@ -15,15 +20,15 @@ public class Square {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getLocation() {
-        return location;
+        return this.location;
     }
 
     public void setOwner(Player player) {
-            this.owner = player;
+        this.owner = player;
     }
 
     public Player getOwner() {

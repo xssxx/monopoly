@@ -1,3 +1,8 @@
+/*
+ * Author: Prariyavit Tachakitmatetumrong
+ * Student ID: 6510450593
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,6 +30,11 @@ public class Player {
             dice[i] = new Die();
     }
 
+    /*
+     * check if in jail then handle jail turn
+     * roll dice & move piece
+     * ask for buying
+     */
     public void takeTurn() {
         if (this.isInJail()) {
             handleJailTurn();
@@ -48,6 +58,10 @@ public class Player {
         System.out.println('\n');
     }
 
+    /*
+     * roll 2 dices
+     * @return value between 1-12
+     */
     private int rollDice() {
         int total = 0;
         for (int i = 0; i < MGame.MAX_DICE; i++) {
@@ -57,6 +71,11 @@ public class Player {
         return total;
     }
 
+    /*
+     * @param total: number of move to move
+     * get old location and then move to new location
+     * if move to someone else property then pay tax
+     */
     private void movePiece(int total) {
         Square oldLoc = piece.getLocation();
         Square newLoc = board.getSquare(oldLoc, total);
@@ -75,6 +94,11 @@ public class Player {
         }
     }
 
+    /*
+     * ask for choice to get out of jail
+     * if not select choice then do nothing
+     * and reduce jail round by 1
+     */
     private void handleJailTurn() {
         System.out.println(name + " is in jail (round " + jailRounds + ").");
 
@@ -124,17 +148,22 @@ public class Player {
         jailRounds--;
     }
 
-
+    /*
+     * pay 100 to get out of jail immediately
+     */
     private void payToGetOut() {
-        if (money >= 500) {
-            money -= 500;
+        if (money >= 100) {
+            money -= 100;
             jailRounds = 0; // Reset jail rounds
-            System.out.println(name + " paid $500 to get out of jail.");
+            System.out.println(name + " paid $100 to get out of jail.");
         } else {
-            System.out.println(name + " does not have enough money to pay $500. You'll try to roll doubles on the next turn.");
+            System.out.println(name + " does not have enough money to pay $100. You'll try to roll doubles on the next turn.");
         }
     }
 
+    /*
+     * roll 2 dice and check if there's a double (get same number both dice)
+     */
     private boolean tryRollDoubles() {
         dice[0].roll();
         dice[1].roll();
@@ -167,6 +196,10 @@ public class Player {
         return ownedSquares;
     }
 
+    /*
+     * pay tax to owner of square
+     * if can't pay tax then remove player from game
+     */
     public void payTax(Square loc) {
         Player owner = loc.getOwner();
         int tax = loc.getTax();
@@ -186,17 +219,25 @@ public class Player {
         }
     }
 
+    /*
+     * receive tax from player that move to property
+     * @param money: amount of tax to receive
+     */
     public void receiveMoney(int money) {
         this.money += money;
     }
 
+    /*
+     * ask for buying
+     * @param newLoc: location to buy property
+     */
     public void buy(Square newLoc) {
         if (this.money < newLoc.getPrice()) {
             System.out.println("Not enough money to buy " + newLoc.getLocation());
             return;
         }
 
-        String ans = "";
+        String ans;
         while (true) {
             System.out.println("Do you want to buy " + newLoc.getLocation() + "? (y/n)");
             ans = scanner.nextLine();

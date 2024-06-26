@@ -1,3 +1,8 @@
+/*
+ * Author: Prariyavit Tachakitmatetumrong
+ * Student ID: 6510450593
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,7 +30,7 @@ public class MGame {
         // Get player count
         int playerCount = 0;
         while (playerCount < 2 || playerCount > MAX_PLAYER) {
-            System.out.println("Enter player count (3-8): ");
+            System.out.println("Enter player count (2-8): ");
             if (scanner.hasNextInt()) {
                 playerCount = scanner.nextInt();
                 scanner.nextLine();
@@ -39,7 +44,7 @@ public class MGame {
         for (int i = 0; i < playerCount; i++) {
             System.out.printf("Enter player %d name: ", i + 1);
             String name = scanner.nextLine();
-            players.add(new Player(name, dice, board, 1500, scanner, this));
+            players.add(new Player(name, dice, board, 1000, scanner, this));
         }
     }
 
