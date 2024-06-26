@@ -36,7 +36,7 @@ public class Board {
         squares.add(new Square(24, "Illinois Avenue", 240));
         squares.add(new Square(25, "B. & O. Railroad", 200));
         squares.add(new Square(26, "Atlantic Avenue", 260));
-        squares.add(new Square(27, "Ventnor Avenue", 260));
+        squares.add(new Square(27, "Vent nor Avenue", 260));
         squares.add(new Square(28, "Water Works", 150));
         squares.add(new Square(29, "Marvin Gardens", 280));
 

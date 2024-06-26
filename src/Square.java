@@ -1,8 +1,8 @@
 public class Square {
-    private String name;
-    private int location;
+    private final String name;
+    private final int location;
+    private final int price;
     private Player owner;
-    private int price;
 
     public Square(int location, String name, int price) {
         this.location = location;

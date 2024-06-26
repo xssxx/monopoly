@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
-    private String name;
+    private final String name;
+    private final MGame game;
+    private final Scanner scanner;
+    private final Piece piece;
+    private final Board board;
+    private final Die[] dice;
     private int money;
-    private Piece piece;
-    private Board board;
-    private Die[] dice;
     private int jailRounds;
-    private MGame game;
-    private Scanner scanner;
 
     public Player(String name, Die[] dice, Board board, int money, Scanner scanner, MGame game) {
         this.name = name;
@@ -38,8 +38,12 @@ public class Player {
         System.out.println("Price: " + newLoc.getPrice());
         System.out.println("Total money: " + this.getMoney());
 
-        if (jailRounds == 0)
+        // Check if the price is 0, then skip buying
+        if (newLoc.getPrice() == 0) {
+            System.out.println("Special square");
+        } else {
             buy(newLoc);
+        }
 
         System.out.println('\n');
     }

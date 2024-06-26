@@ -6,15 +6,14 @@ public class MGame {
     public static final int MAX_DICE = 2;
     public static final int MAX_PLAYER = 8;
 
+    private final ArrayList<Player> players;
+
     private int roundCount;
-    private Die[] dice;
-    private Board board;
-    private ArrayList<Player> players;
 
     public MGame() {
         this.roundCount = 0;
-        this.board = new Board();
-        this.dice = new Die[MAX_DICE];
+        Board board = new Board();
+        Die[] dice = new Die[MAX_DICE];
         this.players = new ArrayList<>();
 
         for (int i = 0; i < MAX_DICE; i++) {
@@ -40,7 +39,7 @@ public class MGame {
         for (int i = 0; i < playerCount; i++) {
             System.out.printf("Enter player %d name: ", i + 1);
             String name = scanner.nextLine();
-            players.add(new Player(name, dice, board, 5000, scanner, this));
+            players.add(new Player(name, dice, board, 1500, scanner, this));
         }
     }
 
